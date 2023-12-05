@@ -23,6 +23,7 @@ int main(int argc, char *argv[]) {
   // Store the name of the file to read as a string, convert from old C-style
   // to newer C++ string class here.  The argv[1] holds the first command-line
   // argument.
+  try {
   string filename(argv[1]);
   StatCalculator calculator(filename);
 
@@ -32,6 +33,11 @@ int main(int argc, char *argv[]) {
   cout << "StdDev: " << setprecision(4) << calculator.EstimateStandardDeviation() << endl;
   cout << "Max:    " << setprecision(4) << calculator.FindMax() << endl;
   cout << "Min:    " << setprecision(4) << calculator.FindMin() << endl;
+  }
+  
+  catch (const exception &e) {
+    cerr << "Error: " << e.what() << endl; 
+  }
 
   // Everything is okay
   return 0;
