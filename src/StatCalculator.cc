@@ -21,8 +21,12 @@ StatCalculator::StatCalculator(const string &filename) {
   // Read numbers in and push them into the numbersList vector
   while (!textFile.eof()) {
     double x; 
-    textFile >> x;
-    numberList_.push_back(x);
+    if (textFile >> x) {
+      numberList_.push_back(x);
+    }
+    else {
+      throw runtime_error("Error: Non-numeric data found in the file.");
+    }
   }
 
   // VERIFY IF READ OPERATION WAS SUCCESSFUL
