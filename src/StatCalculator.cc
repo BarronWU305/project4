@@ -13,12 +13,23 @@ StatCalculator::StatCalculator(const string &filename) {
   ifstream textFile;
   textFile.open(filename.c_str());
 
+  //UNABLE TO OPEN FILE
+  if (!textFile.is_open()){
+    throw invalid_argument("Error: Unable to open the file");
+  }
+
   // Read numbers in and push them into the numbersList vector
   while (!textFile.eof()) {
     double x; 
     textFile >> x;
     numberList_.push_back(x);
   }
+
+  //HANDLES IF THERE ARE NO VALID NUMBERS
+  if (numberList_.empty()) {
+    throw invalid_argument("Error: There were no valid numbers found in the file"); 
+  }
+
 
   textFile.close();
 }
