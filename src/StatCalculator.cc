@@ -31,6 +31,8 @@ StatCalculator::StatCalculator(const string &filename) {
     cerr << "Error: There were no valid numbers found in the file" << endl; 
     textFile.clear();
   }
+  //HANDLES IF THERE IS STRINGS 
+  //if (numberList_)
 
 
   textFile.close();
