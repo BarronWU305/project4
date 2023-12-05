@@ -14,9 +14,8 @@ StatCalculator::StatCalculator(const string &filename) {
   textFile.open(filename.c_str());
 
   //UNABLE TO OPEN FILE
-  if (!textFile.is_open()){
-    cerr << "Error: Unable to open the file" << endl;
-    textFile.clear();
+  if (!textFile.is_open()) {
+    throw runtime_error("Error opening file.");
   }
 
   // Read numbers in and push them into the numbersList vector
@@ -31,9 +30,6 @@ StatCalculator::StatCalculator(const string &filename) {
     cerr << "Error: There were no valid numbers found in the file" << endl; 
     textFile.clear();
   }
-  //HANDLES IF THERE IS STRINGS 
-  //if (numberList_)
-
 
   textFile.close();
 }

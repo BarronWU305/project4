@@ -1,15 +1,15 @@
-#include<iostream>
-#include<iomanip>
-#include<string>
-#include<StatCalculator.h>
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <StatCalculator.h>
 
 using namespace std;
 
 // RPW: This is how we read command-line arguments.  The argc parameter
-//      gives us the *number* of command-line arguments.  The *argv[] 
+//      gives us the *number* of command-line arguments.  The *argv[]
 //      parameter is an array of the old-style C strings (not the C++
 //      "string" class).  The argv array is a little strange:  The argv[0]
-//      actually holds the *name of the program*.  The argv[1] holds the 
+//      actually holds the *name of the program*.  The argv[1] holds the
 //      first true command-line argument.  I convert argv[1] to a string
 //      on line 26, below.
 int main(int argc, char *argv[]) {
@@ -23,26 +23,28 @@ int main(int argc, char *argv[]) {
   // Store the name of the file to read as a string, convert from old C-style
   // to newer C++ string class here.  The argv[1] holds the first command-line
   // argument.
-  try {
   string filename(argv[1]);
-  StatCalculator calculator(filename);
+  try {
+    StatCalculator calculator(filename);
 
-  // Report out all the summary statistics:
-  cout << "n:      " << calculator.GetSampleSize() << endl;
-  cout << "Mean:   " << setprecision(4) << calculator.EstimateMean() << endl;
-  cout << "StdDev: " << setprecision(4) << calculator.EstimateStandardDeviation() << endl;
-  cout << "Max:    " << setprecision(4) << calculator.FindMax() << endl;
-  cout << "Min:    " << setprecision(4) << calculator.FindMin() << endl;
+    // Report out all the summary statistics:
+    cout << "n:      " << calculator.GetSampleSize() << endl;
+    cout << "Mean:   " << setprecision(4) << calculator.EstimateMean() << endl;
+    cout << "StdDev: " << setprecision(4) << calculator.EstimateStandardDeviation() << endl;
+    cout << "Max:    " << setprecision(4) << calculator.FindMax() << endl;
+    cout << "Min:    " << setprecision(4) << calculator.FindMin() << endl;
   }
-  
+
+//ALLOWS FOR HANDLING OF I/O RELATED EXCEPTIONS 
   catch (const ios_base::failure &e) {
-    cerr << "An I/O Exception was caught: " << e.what() << endl; 
-    return 1; 
+    cerr << "An I/O Exception was caught: " << e.what() << endl;
+    return 1;
   }
 
+//HANDLES GENERAL EXCEPTIONS
   catch (const exception &e) {
-    cerr << "An exception was caught: " << e.what() << endl; 
-    return 1; 
+    cerr << "An exception was caught: " << e.what() << endl;
+    return 1;
   }
 
   // Everything is okay
