@@ -25,6 +25,11 @@ StatCalculator::StatCalculator(const string &filename) {
     numberList_.push_back(x);
   }
 
+  // VERIFY IF READ OPERATION WAS SUCCESSFUL
+  if (textFile.fail() && !textFile.eof()) {
+     throw runtime_error("Error: We encountered some formatting issue in the file.");
+  }
+
   textFile.close();
 }
 /**
@@ -38,6 +43,7 @@ StatCalculator::StatCalculator(const string &filename) {
  *  @return The sample size
  **/
 //DELETED OG TEST AND ADDED THE TEST BELOW TO TEST IF THERE ARE ENOUGH NUMBERS IN THE FILE.
+//IF THERE IS LESS THAN 2 NUMBERS, THE PROGRAM CANNOT RUN PROPERLY. 
 unsigned int StatCalculator::GetSampleSize() const {
   if (numberList_.size() < 2) {
     throw runtime_error("There are less than 2 numbers in the file. Needs more info."); 
