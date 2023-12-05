@@ -35,8 +35,14 @@ int main(int argc, char *argv[]) {
   cout << "Min:    " << setprecision(4) << calculator.FindMin() << endl;
   }
   
+  catch (const ios_base::failure &e) {
+    cerr << "An I/O Exception was caught: " << e.what() << endl; 
+    return 1; 
+  }
+
   catch (const exception &e) {
-    cerr << "Error: " << e.what() << endl; 
+    cerr << "An exception was caught: " << e.what() << endl; 
+    return 1; 
   }
 
   // Everything is okay

@@ -15,7 +15,7 @@ StatCalculator::StatCalculator(const string &filename) {
 
   //UNABLE TO OPEN FILE
   if (!textFile.is_open()){
-    throw invalid_argument("Error: Unable to open the file");
+    cerr << "Error: Unable to open the file" << endl;
   }
 
   // Read numbers in and push them into the numbersList vector
@@ -27,7 +27,7 @@ StatCalculator::StatCalculator(const string &filename) {
 
   //HANDLES IF THERE ARE NO VALID NUMBERS
   if (numberList_.empty()) {
-    throw invalid_argument("Error: There were no valid numbers found in the file"); 
+    cerr << "Error: There were no valid numbers found in the file" << endl; 
   }
 
 
@@ -41,6 +41,7 @@ StatCalculator::StatCalculator(const string &filename) {
  **/
 unsigned int StatCalculator::GetSampleSize() const {
   return numberList_.size();
+  //I FEEL LIKE THERE NEEDS TO BE SOMETHING HERE
 }
 
 
