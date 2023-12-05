@@ -41,6 +41,9 @@ StatCalculator::StatCalculator(const string &filename) {
  *  @return The sample size
  **/
 unsigned int StatCalculator::GetSampleSize() const {
+  if (numberList_.size() < 2) {
+    throw runtime_error("There are less than 2 numbers in the file. Needs more info."); 
+  }
   return numberList_.size();
   //I FEEL LIKE THERE NEEDS TO BE SOMETHING HERE
 }
