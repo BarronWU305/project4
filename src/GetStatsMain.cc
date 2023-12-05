@@ -38,6 +38,7 @@ int main(int argc, char *argv[]) {
 //ALLOWS FOR HANDLING OF I/O RELATED EXCEPTIONS 
   catch (const ios_base::failure &e) {
     cerr << "An I/O Exception was caught: " << e.what() << endl;
+    cerr << errno << endl; 
     return 1;
   }
 
