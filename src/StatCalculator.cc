@@ -28,7 +28,7 @@ StatCalculator::StatCalculator(const string &filename) {
   //HANDLES IF THERE ARE NO VALID NUMBERS
   if (numberList_.empty()) {
     throw invalid_argument("Error: There were no valid numbers found in the file. You may also not have anything within the file.");
-    textFile.clear();
+    //textFile.clear();
   }
 
 
