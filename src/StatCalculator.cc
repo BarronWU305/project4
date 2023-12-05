@@ -16,6 +16,7 @@ StatCalculator::StatCalculator(const string &filename) {
   //UNABLE TO OPEN FILE
   if (!textFile.is_open()){
     cerr << "Error: Unable to open the file" << endl;
+    textFile.clear();
   }
 
   // Read numbers in and push them into the numbersList vector
@@ -28,6 +29,7 @@ StatCalculator::StatCalculator(const string &filename) {
   //HANDLES IF THERE ARE NO VALID NUMBERS
   if (numberList_.empty()) {
     cerr << "Error: There were no valid numbers found in the file" << endl; 
+    textFile.clear();
   }
 
 
