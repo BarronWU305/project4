@@ -26,6 +26,11 @@ StatCalculator::StatCalculator(const string &filename) {
   }
 
   textFile.close();
+
+   // EMPTY FILE
+  if (numberList_.empty()) {
+      throw runtime_error("Error: The file is empty or does not contain valid numbers.");
+    }
 }
 /**
  I WAS UNSURE ABOUT CHANGING THE STRUCTURE OF THE WHILE LOOP ABOVE, 
@@ -43,7 +48,6 @@ unsigned int StatCalculator::GetSampleSize() const {
     throw runtime_error("There are less than 2 numbers in the file. Needs more info."); 
   }
   return numberList_.size();
-  //I FEEL LIKE THERE NEEDS TO BE SOMETHING HERE
 }
 
 
