@@ -36,11 +36,6 @@ StatCalculator::StatCalculator(const string &filename) {
 
   textFile.close();
 }
-/**
- I WAS UNSURE ABOUT CHANGING THE STRUCTURE OF THE WHILE LOOP ABOVE, 
- BUT COULD WE CHANGE IT IN ORDER TO HANDLE STRINGS BEING GIVEN?
-*/
-
 
 /**
  *  Return the total number of values in the sample.
