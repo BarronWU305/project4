@@ -25,21 +25,19 @@ StatCalculator::StatCalculator(const string &filename) {
     numberList_.push_back(x);
   }
 
-  //HANDLES IF THERE ARE NO VALID NUMBERS
-  if (numberList_.empty()) {
-    throw invalid_argument("Error: There were no valid numbers found in the file. You may also not have anything within the file.");
-    textFile.clear();
-  }
-
-
   textFile.close();
 }
+/**
+ I WAS UNSURE ABOUT CHANGING THE STRUCTURE OF THE WHILE LOOP ABOVE, 
+ BUT COULD WE CHANGE IT IN ORDER TO HANDLE STRINGS BEING GIVEN?
+*/
 
 
 /**
  *  Return the total number of values in the sample.
  *  @return The sample size
  **/
+//DELETED OG TEST AND ADDED THE TEST BELOW TO TEST IF THERE ARE ENOUGH NUMBERS IN THE FILE.
 unsigned int StatCalculator::GetSampleSize() const {
   if (numberList_.size() < 2) {
     throw runtime_error("There are less than 2 numbers in the file. Needs more info."); 
