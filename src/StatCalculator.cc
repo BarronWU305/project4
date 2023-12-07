@@ -26,6 +26,10 @@ StatCalculator::StatCalculator(const string &filename) {
     }
     else {
       throw runtime_error("Error: Non-numeric data found in the file.");
+      // RPW:  So *any* misread and you just bail out without providing
+      //       meaningful context to the user?  What if there is a typo in
+      //       line 100 of a data file with 10,000 points?  How will the user
+      //       know what to fix?
     }
   }
 
@@ -33,6 +37,9 @@ StatCalculator::StatCalculator(const string &filename) {
   if (textFile.fail() && !textFile.eof()) {
      throw runtime_error("Error: We encountered some formatting issue in the file.");
   }
+  // RPW:  If the file has a terminating newline on the last line, your code
+  //       will toss out the whole file.  But this is a pretty normal thing in
+  //       OSs other than Windows.  
 
   textFile.close();
 }
@@ -44,6 +51,9 @@ StatCalculator::StatCalculator(const string &filename) {
 //DELETED OG TEST AND ADDED THE TEST BELOW TO TEST IF THERE ARE ENOUGH NUMBERS IN THE FILE.
 //IF THERE IS LESS THAN 2 NUMBERS, THE PROGRAM CANNOT RUN PROPERLY. 
 unsigned int StatCalculator::GetSampleSize() const {
+  // RPW:  This is a good idea, but a brittle location for it.  It only works
+  //       in this case because the main calls this function first.  If it
+  //       called FindMin first, for example, it would be problematic.
   if (numberList_.size() < 2) {
     throw runtime_error("There are less than 2 numbers in the file. Needs more info."); 
   }

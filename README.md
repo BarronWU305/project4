@@ -1,5 +1,21 @@
 # CSCI 208, Spring 2023, Programming Project 4
 
+## GRADE: 85 of 100
+* Submitted on time
+* Program compiles and links without errors or warnings
+* Deals with some test cases, but throws out valid files, as well.
+  Likely this is due to eof newlines, which differ between Linux and Windows
+  (always test on Hopper).  [-5]
+* Though errors are dealt with, they are not dealt with in a graceful way.
+  The program stops for *any* error of any sort (including some things that
+  aren't really errors) and reports to the user very little to help them
+  resolve the issue.  Better to explain to the user exactly what is wrong ...
+  E.g., There was an illegal read?  What did it try to read and what did it 
+  expect? Etc. [-10]
+* Handles an exception
+* Returns non-zero status codes and uses cerr appropriately
+* Maintains code, style, and comment consistency
+
 ## Make a Stats Calculator Robust
 The code I've given you can read a file containing numbers and report some basic statistics about that number (mean, standard deviation, min, and max).  But the code isn't very robust (it's easy to break it).  Your job is to make sure the program doesn't crash.  Deal with all potential errors in a *cosntructive* way that makes your program as robust as possible.  Put yourself in the shoes of the user:  How would you want the program to behave under different conditions if you were legitimately using this program?  That is:  If you can make your program run correctly in spite of a problem, then do so.  If you *must* stop the program, make sure you do so gracefully while informing the user of exactly what the problem is.
 
